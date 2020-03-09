@@ -31,7 +31,7 @@ The train-test split was 80-20. That is, 80% of the dataset was used for trainin
 All these can be installed using the anaconda python distribution
 
 ## File Description
-The pickle(.pkl) files are in the google drive link: `https://drive.google.com/open?id=1WxoR21Hh9qVnkrpxf3fQz2ceNlJ6mu9c` this is due to the git limit 100 MB per file. Please download these and unzip before you procee.
+The pickle(.pkl) files are in the google drive link: `https://drive.google.com/open?id=1WxoR21Hh9qVnkrpxf3fQz2ceNlJ6mu9c` this is due to the git limit 100 MB per file. Please download these and unzip before you proceed.
 1. data/* - these contain the Starbucks datasets. More on these can be found in the jupyter notebook
 2. Starbucks_Capstone_notebook.ipynb - contains the code and output of model building, observation, inference, etc.
 3. *_model.pkl - These are the stored model for prediction
