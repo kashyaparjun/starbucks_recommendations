@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Startbucks recommendation strategy</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Startbucks recommendation strategy - Capstone project</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="https://www.udacity.com/">Made with Udacity</a></li>
+                <li><a href="https://github.com/kashyaparjun">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="text-center">Startbucks recommendation startegy engine</h1>
+        <p class="text-center">Predicting a recommendation strategy for a customer based on age, income gender and membership date</p>
+        <hr />
+      
+        <div class="row">
+            <div class="col-lg-6 form-group-lg">
+                <form action="/go" method="get">
+                    <input type="number" required min="0" max="100" class="form-control form-control-lg" name="age" placeholder="Enter age of customer"/>
+                    <select type="text" required class="form-control form-control-lg" name="gender">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
+                    </select>
+                    <input type="number" required min="0" class="form-control form-control-lg" name="income" placeholder="Enter income of customer"/>
+                    <input type="date" required class="form-control form-control-lg" name="membership_date" maxDate="moment" placeholder="Enter membership date of customer"/>
+                    <br>
+                    <div class="col-lg-offset-4">
+                        <button type="submit" class="btn btn-lg btn-success">Classify Message</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 form-group-lg">
+                <p><b>Use the form on the left to input and test the model. It takes in age, gender, income and membership date to predict the recommendation strategy for the customer.</b></p>
+                <p><b>The recommendation strategy includes the channel of recommendation, duration, difficuly of conversion and also whether to recommend a Buy One Get One(BOGO) offer or a discount.</b></p>
+            </div>
+        </div>
+
+        {% block message %}
+        {% endblock %}
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}
+        <div class="page-header">
+            <h1 class="text-center">Overview of Training Dataset</h1>
+        </div>
+    {% endblock %}
+
+    {% for id in ids %}
+        <div id="{{id}}"></div>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}};
+    const ids = {{ids | safe}};
+    for(let i in graphs) {
+        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
+    }
+</script>
+
+</body>
+</html>

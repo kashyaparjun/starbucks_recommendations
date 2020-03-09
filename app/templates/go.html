@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+{% block title %}Results{% endblock %}
+
+{% block message %}
+    <hr />
+    <h4 class="text-center">CUSTOMER</h4>
+    <p class="text-center"><i>Age: {{age}}, Gender: {{gender}}, Income: {{income}}, Membership Date: {{membership_date}}</i></p>
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Recommendation strategy</h1>
+        <ul class="list-group">
+            {% for key, item in result.items() %}
+                <li class="list-group-item list-group-item-success text-center">{{key}} : {{item}}</li>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
